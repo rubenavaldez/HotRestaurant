@@ -13,10 +13,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // ROUTES
-  
-  app.get("/reservation", function(req, res) {
-    var chosen = req.params.reservation;
-  });
+
+app.get("/", function(req, res) {
+  // Serves Homepage
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/reservation", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+  // app.get("/reservation", function(req, res) {
+  //   var chosen = req.params.reservation;
+  // });
 
 
 //require("./apiRoutes")(app);
