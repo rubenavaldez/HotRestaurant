@@ -1,8 +1,26 @@
+express =  require("express");
+app = express();
+var PORT = 3000;
+
+
 $("body").on("click",".btn", function(){
 
 
 
-
+    app.get(this.val(), function(req, res) {
+      });
+      
+      app.get("/yoda", function(req, res) {
+        res.json(yoda);
+      });
+      
+      app.get("/darthmaul", function(req, res) {
+        res.json(darthmaul);
+      });
+      
+      app.get("/Obi Wan Kenobi", function(req,res){
+        res.json(obiwan)
+      })
 
 
 
@@ -10,22 +28,26 @@ $("body").on("click",".btn", function(){
  console.log(path);
  queryURL = "https://localhost:3000" + path;
 
+
+
+
  switch(path){
     case "/tables":
         console.log("/tables")
-            getInfo()
+            goThere();
+            getInfo();
         break;
     case"/reservation":
     console.log("/reservation")
-            goThere()
+            goThere();
         break;
     case"/index":
     console.log("/index")
-            goThere()
+            goThere();
         break;
     case "submit":
             console.log("submit")
-            makeRes()
+            makeRes();
         break;
     default:
         console.log("What happening?");
@@ -62,7 +84,10 @@ function getInfo(){
     }) .then(function(response){
     
         console.log(response);
+
+        for (i = 0; i < response.length; i++ ){
         $(".results").append("<p>"+response+"<p>");
+    }
     
     }) 
     

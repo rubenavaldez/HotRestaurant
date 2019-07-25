@@ -32,8 +32,8 @@ app.get("/tables", function(req, res) {
   // });
 
 
-//require("./apiRoutes")(app);
-//require("./htmlRoutes")(app);
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 // OBJECT ARRAY
 
@@ -48,7 +48,7 @@ var reservation = [{
     name: "Ruben Valdez",
     phone: "520-555-8000",
     email: "ruben@example.com",
-    uniqueID: "7B2222"
+    uniqueID: "7BA2222"
   }];
 
 // LISTENER
