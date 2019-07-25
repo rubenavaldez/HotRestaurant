@@ -1,46 +1,43 @@
-
-
-
-
-
-
 $("body").on("click",".btn", function(){
 
- var path = $(".btn").val();
 
- var queryURL = "https://localhost:3000" + path;
+
+
+
+
+
+ path = $(this).val();
+ console.log(path);
+ queryURL = "https://localhost:3000" + path;
 
  switch(path){
     case "/tables":
+        console.log("/tables")
             getInfo()
         break;
     case"/reservation":
-            makeRes()
+    console.log("/reservation")
+            goThere()
         break;
     case"/index":
-            getInfo()
+    console.log("/index")
+            goThere()
         break;
-        
-
+    case "submit":
+            console.log("submit")
+            makeRes()
+        break;
+    default:
+        console.log("What happening?");
+        break;
 
  }
  
-function getInfo(){
-
-$.ajax ({
-
-    method: "GET",
-    url:queryURL
-
-}) .then(function(response){
-
-    console.log(response);
-
-}) 
-
-}
+});
 
 function makeRes(){
+
+
 
     $.ajax ({
 
@@ -55,4 +52,37 @@ function makeRes(){
 
 }
 
-});
+function getInfo(){
+
+    $.ajax ({
+    
+        method: "GET",
+        url:queryURL
+    
+    }) .then(function(response){
+    
+        console.log(response);
+        $(".results").append("<p>"+response+"<p>");
+    
+    }) 
+    
+    }
+
+function goThere(){
+
+    
+    $.ajax ({
+    
+        method: "GET",
+        url:queryURL
+    
+    }) .then(function(response){
+    
+      
+    
+    }) 
+    
+    }
+
+
+
