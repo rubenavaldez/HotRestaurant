@@ -6,6 +6,22 @@ var path = require("path");
 
 var app = express();
 
+// OBJECT ARRAY
+
+var reservation = [{
+  name: "Will Berring",
+  phone: "520-555-1212",
+  email: "will@example.com",
+  uniqueID: "1A2000"
+}];
+
+var waitList = [{
+  name: "Ruben Valdez",
+  phone: "520-555-8000",
+  email: "ruben@example.com",
+  uniqueID: "7B2222"
+}];
+
 // Assign port for listener
 var PORT = process.env.PORT || 3000;
 
@@ -17,6 +33,7 @@ app.use(express.json());
 app.get("/", function(req, res) {
   // Serves Homepage
   res.sendFile(path.join(__dirname, "index.html"));
+  //res.sendFile(path.join(__dirname, "style.css")); just an example of how to server css to the browser
 });
 
 app.get("/reservation", function(req, res) {
@@ -29,16 +46,16 @@ app.get("/tables", function(req, res) {
 
   app.get("/reservation", function(req, res) {
     var chosen = req.params.reservation;
-  });
+  
 
   for (var i = 0; i < reservation.length; i++) {
     if (chosen === reservation[i].name) {
       return res.json(reservation[i]);
     }
+  }
   
-
-  return res.json(false);
-};
+res.json(false);
+});
 
 // Create New reservation - takes in JSON input
 app.post("/api/reservation", function(req, res) {
@@ -62,21 +79,7 @@ app.post("/api/reservation", function(req, res) {
 // require("./routes/apiRoutes")(app);
 // require("./routes/htmlRoutes")(app);
 
-// OBJECT ARRAY
 
-var reservation = [{
-    name: "Will Berring",
-    phone: "520-555-1212",
-    email: "will@example.com",
-    uniqueID: "1A2000"
-  }];
-
-  var waitList = [{
-    name: "Ruben Valdez",
-    phone: "520-555-8000",
-    email: "ruben@example.com",
-    uniqueID: "7B2222"
-  }];
 
 // LISTENER
 
