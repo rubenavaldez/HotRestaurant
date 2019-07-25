@@ -18,18 +18,20 @@
 </head>
 <body>
   <div class="background">
-    <div class="background">
-        <div class="container">
-          <div class="row">
-            <div class="jumbotron jumbotron-fluid m-3 bg-dark text-light col col-lg-12 text-center ">
-              <header>
-                <aria-hidden="true">
-                  <h1>Hot Restaurant</h1>
-                  <h> We only have 5 tables! Book your seat before they all are gone!</h>
-                  <button type="button" class="btn btn-primary">View Tables</button>
-                  <button type="button" class="btn btn-danger">Make Reservations</button>
-              </header>
-            </div>
+    <div class="container">
+     
+        <div class="row">
+          <div class="jumbotron jumbotron-fluid m-3 bg-dark text-light col col-lg-12 text-center ">
+            <header>
+              <aria-hidden="true">
+                <h1>Hot Restaurant</h1>
+                <h3> We only have 5 tables! Book your seat before they all are gone!</h3>
+                <div></div>
+                <button id="table-button"    type="button" class="btn btn-primary" value="/tables">View Tables</button>
+                <button id="reservation-button" type="button" class="btn btn-danger" value="/reservation">Make Reservations</button>
+                <button id="home-button" type="button" class="btn btn-info" value="/index">Home</button>
+            </header>
+          </div>
      
     <div class="container">
       <div class="row">
@@ -37,7 +39,13 @@
           <form>
             <div class="form-group">
               <label for="search">Name</label>
-              <input type="text" class="form-control" id="trainName">
+              <input type="text" class="form-control" id="userName">
+              <label for="search">Phone Number</label>
+              <input type="text" class="form-control" id="userNumber">
+              <label for="search">Email</label>
+              <input type="text" class="form-control" id="userEmail">
+              <label for="search">Unique ID</label>
+              <input type="text" class="form-control" id="userID">
             </div>
             
             <button id="submit" type="submit" class="btn m-2 btn-dark">Submit</button>
