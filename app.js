@@ -10,104 +10,29 @@ $("body").on("click",".btn", function(){
     app.get(this.val(), function(req, res) {
       });
       
-      app.get("/yoda", function(req, res) {
-        res.json(yoda);
+      app.get("/tables", function(req, res) {
+        res.json(waitList);
+        $(".results").append("<p>"+res+"<p>");
       });
-      
-      app.get("/darthmaul", function(req, res) {
-        res.json(darthmaul);
+
+    // Question: What does this code do?
+    $("#submit").on("click", function(event) {
+        event.preventDefault();
+        var newTable = {
+          name: $("#userName").val().trim(),
+          phone: $("#userNumber").val().trim(),
+          email: $("#userEmail").val().trim(),
+          uniqueID: $("#userID").val().trim()
+        };
+  
+        // Question: What does this code do??
+        $.post("submit", newTable)
+          .then(function(data) {
+            console.log("reservation.html", data);
+            alert("Adding...");
+          });
       });
-      
-      app.get("/Obi Wan Kenobi", function(req,res){
-        res.json(obiwan)
-      })
 
-
-
- path = $(this).val();
- console.log(path);
- queryURL = "https://localhost:3000" + path;
-
-
-
-
- switch(path){
-    case "/tables":
-        console.log("/tables")
-            goThere();
-            getInfo();
-        break;
-    case"/reservation":
-    console.log("/reservation")
-            goThere();
-        break;
-    case"/index":
-    console.log("/index")
-            goThere();
-        break;
-    case "submit":
-            console.log("submit")
-            makeRes();
-        break;
-    default:
-        console.log("What happening?");
-        break;
-
- }
- 
-});
-
-function makeRes(){
-
-
-
-    $.ajax ({
-
-        method: "PUSH",
-        url:queryURL
-    
-    }) .then(function(response){
-    
-        console.log(response);
-    
-    }) 
-
-}
-
-function getInfo(){
-
-    $.ajax ({
-    
-        method: "GET",
-        url:queryURL
-    
-    }) .then(function(response){
-    
-        console.log(response);
-
-        for (i = 0; i < response.length; i++ ){
-        $(".results").append("<p>"+response+"<p>");
-    }
-    
-    }) 
-    
-    }
-
-function goThere(){
-
-    
-    $.ajax ({
-    
-        method: "GET",
-        url:queryURL
-    
-    }) .then(function(response){
-    
-      
-    
-    }) 
-    
-    }
-
+ })
 
 
