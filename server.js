@@ -32,8 +32,8 @@ app.get("/tables", function(req, res) {
   // });
 
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// require("./routes/apiRoutes")(app);
+// require("./routes/htmlRoutes")(app);
 
 // OBJECT ARRAY
 
