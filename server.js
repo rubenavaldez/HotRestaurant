@@ -27,10 +27,37 @@ app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-  // app.get("/reservation", function(req, res) {
-  //   var chosen = req.params.reservation;
-  // });
+  app.get("/reservation", function(req, res) {
+    var chosen = req.params.reservation;
+  });
 
+  for (var i = 0; i < reservation.length; i++) {
+    if (chosen === reservation[i].name) {
+      return res.json(reservation[i]);
+    }
+  
+
+  return res.json(false);
+};
+
+// Create New reservation - takes in JSON input
+app.post("/api/reservation", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body parsing middleware
+  var newreservation = req.body;
+
+  console.log(newreservation);
+
+  // We then add the json the user sent to the character array
+  reservation.push(newreservation);
+
+  // We then display the JSON to the users
+  res.json(newresvation);
+});
+
+
+
+  
 
 // require("./routes/apiRoutes")(app);
 // require("./routes/htmlRoutes")(app);
@@ -48,7 +75,7 @@ var reservation = [{
     name: "Ruben Valdez",
     phone: "520-555-8000",
     email: "ruben@example.com",
-    uniqueID: "7BA2222"
+    uniqueID: "7B2222"
   }];
 
 // LISTENER
